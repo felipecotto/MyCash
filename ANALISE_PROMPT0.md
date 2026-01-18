@@ -11,8 +11,8 @@
   - Link "Cartões" (texto cinza, ícone cartão)
 - **Perfil do Usuário** (rodapé):
   - Avatar circular
-  - Nome: "Lucas Marte" (negrito)
-  - Email: "lucasmarte@gmail.com" (cinza claro)
+  - Nome: "Felipe Oliveira" (negrito)
+  - Email: "felipeoliveira@gmail.com" (cinza claro)
 
 #### Header Principal
 - **Esquerda**:

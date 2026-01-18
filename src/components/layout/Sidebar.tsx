@@ -92,15 +92,15 @@ export default function Sidebar() {
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-semibold text-gray-900 truncate">
-                Lucas Marte
+                Felipe Oliveira
               </p>
               <p className="text-xs text-gray-500 truncate">
-                lucasmarte@gmail.com
+                felipeoliveira@gmail.com
               </p>
             </div>
           </div>
         ) : (
-          <Tooltip content="Lucas Marte" position="right">
+          <Tooltip content="Felipe Oliveira" position="right">
             <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center mx-auto">
               <span className="text-gray-600 text-sm font-semibold">LM</span>
             </div>

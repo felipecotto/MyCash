@@ -8,7 +8,7 @@ import { FamilyMember } from '../types/familyMember'
 export const mockFamilyMembers: FamilyMember[] = [
   {
     id: 'member-1',
-    name: 'Lucas Marte',
+    name: 'Felipe Oliveira',
     role: 'Pai',
     avatar: null,
     monthlyIncome: 8000,
