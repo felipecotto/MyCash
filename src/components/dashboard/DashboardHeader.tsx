@@ -1,8 +1,11 @@
 import { useState } from 'react'
 import { useFinance } from '../../contexts/FinanceContext'
+import { useSidebar } from '../../hooks/useSidebar'
+import FiltersMobileModal from '../modals/FiltersMobileModal'
 
 export default function DashboardHeader() {
   const { searchText, setSearchText, familyMembers, setSelectedMember, selectedMember } = useFinance()
+  const { isMobile } = useSidebar()
   const [isFilterOpen, setIsFilterOpen] = useState(false)
 
   const handleMemberClick = (memberId: string | null) => {
@@ -55,6 +58,9 @@ export default function DashboardHeader() {
               />
             </svg>
           </button>
+          {isMobile && (
+            <FiltersMobileModal isOpen={isFilterOpen} onClose={() => setIsFilterOpen(false)} />
+          )}
         </div>
 
         {/* Widget de Membros */}

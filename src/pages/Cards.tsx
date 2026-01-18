@@ -53,7 +53,7 @@ export default function Cards() {
           return (
             <div
               key={card.id}
-              className="bg-white border-2 rounded-lg p-6 hover:shadow-lg transition-shadow cursor-pointer"
+              className="bg-white border-2 rounded-lg p-6 hover-lift cursor-pointer"
               style={{
                 borderColor: card.theme === 'black' ? '#171717' : card.theme === 'lime' ? '#A3FF00' : '#D1D5DB',
               }}

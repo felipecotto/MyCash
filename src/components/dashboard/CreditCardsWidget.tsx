@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { useFinance } from '../../contexts/FinanceContext'
 import { formatCurrency } from '../../utils/currency.utils'
+import CardDetailsModal from '../modals/CardDetailsModal'
 
 export default function CreditCardsWidget() {
   const { creditCards } = useFinance()
   const [currentPage, setCurrentPage] = useState(1)
+  const [selectedCard, setSelectedCard] = useState<string | null>(null)
   const itemsPerPage = 3
 
   const totalPages = Math.ceil(creditCards.length / itemsPerPage)
@@ -51,7 +53,8 @@ export default function CreditCardsWidget() {
           return (
             <div
               key={card.id}
-              className="bg-white rounded-lg p-4 border border-gray-200 hover:shadow-md transition-shadow cursor-pointer"
+              onClick={() => setSelectedCard(card.id)}
+              className="bg-white rounded-lg p-4 border border-gray-200 hover-lift cursor-pointer"
             >
               <div className="flex items-center gap-4">
                 <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${getThemeColors(card.theme)}`}>
@@ -98,6 +101,12 @@ export default function CreditCardsWidget() {
           </button>
         </div>
       )}
+
+      <CardDetailsModal
+        isOpen={selectedCard !== null}
+        onClose={() => setSelectedCard(null)}
+        card={creditCards.find((c) => c.id === selectedCard) || null}
+      />
     </div>
   )
 }
