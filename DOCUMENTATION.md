@@ -2,17 +2,30 @@
 
 ## Progresso
 - [x] PROMPT 0: Análise Completa
-- [ ] PROMPT 1: Estrutura Base
-- [ ] PROMPT 2: Layout Desktop
-- [ ] PROMPT 3: Header Desktop
-- [ ] PROMPT 4: Cards de Categorias
-- [ ] PROMPT 5: Cards Financeiros
-- [ ] PROMPT 6: Gráfico Fluxo Financeiro
-- [ ] PROMPT 7: Cards & Contas
-- [ ] PROMPT 8: Próximas Despesas
-- [ ] PROMPT 9: Extrato Detalhado
-- [ ] PROMPT 10: Header Mobile
-- [ ] PROMPT 11: Responsividade Completa
+- [x] PROMPT 1: Estrutura Base
+- [x] PROMPT 2: Layout Desktop
+- [x] PROMPT 3: Header Mobile
+- [x] PROMPT 4: Context Global
+- [x] PROMPT 5: Cards Financeiros
+- [x] PROMPT 6: Header Dashboard
+- [x] PROMPT 7: Carrossel Categorias
+- [x] PROMPT 8: Gráfico Fluxo Financeiro
+- [x] PROMPT 9: Widget Cartões
+- [x] PROMPT 10: Widget Despesas
+- [x] PROMPT 11: Tabela Transações
+- [x] PROMPT 12: Modal Nova Transação
+- [x] PROMPT 13: Modal Adicionar Membro
+- [x] PROMPT 14: Modal Adicionar Cartão
+- [x] PROMPT 17: View Cartões
+- [x] PROMPT 18: View Transações
+- [x] PROMPT 19: View Perfil Info
+- [x] PROMPT 20: View Perfil Config
+- [x] PROMPT 22: Utilitários
+- [ ] PROMPT 15: Modal Detalhes Cartão
+- [ ] PROMPT 16: Modal Filtros Mobile
+- [ ] PROMPT 21: Animações Globais
+- [ ] PROMPT 23: Responsividade Final
+- [ ] PROMPT 24: Testes e Validação
 
 ---
 
