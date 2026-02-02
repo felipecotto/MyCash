@@ -1,8 +1,11 @@
+import { useState } from 'react'
 import { useFinance } from '../contexts/FinanceContext'
 import { formatCurrency } from '../utils/currency.utils'
+import AddCardModal from '../components/modals/AddCardModal'
 
 export default function Cards() {
   const { creditCards } = useFinance()
+  const [isAddCardModalOpen, setIsAddCardModalOpen] = useState(false)
 
   const getThemeColors = (theme: string) => {
     switch (theme) {
@@ -27,7 +30,10 @@ export default function Cards() {
             </svg>
           </div>
           <h3 className="text-xl font-bold text-gray-900 mb-2">Nenhum cartão cadastrado</h3>
-          <button className="mt-4 px-6 py-3 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors">
+          <button
+            onClick={() => setIsAddCardModalOpen(true)}
+            className="mt-4 px-6 py-3 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
+          >
             Cadastrar Primeiro Cartão
           </button>
         </div>
@@ -39,7 +45,10 @@ export default function Cards() {
     <div className="p-4 md:p-6 lg:p-8 max-w-[1400px] mx-auto">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-3xl font-bold text-gray-900">Cartões de Crédito</h1>
-        <button className="px-4 py-2 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors flex items-center gap-2">
+        <button
+          onClick={() => setIsAddCardModalOpen(true)}
+          className="px-4 py-2 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors flex items-center gap-2"
+        >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
           </svg>
@@ -110,6 +119,8 @@ export default function Cards() {
           )
         })}
       </div>
+
+      <AddCardModal isOpen={isAddCardModalOpen} onClose={() => setIsAddCardModalOpen(false)} />
     </div>
   )
 }

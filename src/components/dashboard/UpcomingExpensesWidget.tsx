@@ -1,9 +1,12 @@
+import { useState } from 'react'
 import { useFinance } from '../../contexts/FinanceContext'
 import { formatDate } from '../../utils/date.utils'
 import { formatCurrency } from '../../utils/currency.utils'
+import NewTransactionModal from '../modals/NewTransactionModal'
 
 export default function UpcomingExpensesWidget() {
   const { transactions, bankAccounts, creditCards, updateTransaction, addTransaction } = useFinance()
+  const [isTransactionModalOpen, setIsTransactionModalOpen] = useState(false)
 
   const upcomingExpenses = transactions
     .filter((t) => t.type === 'expense' && !t.isPaid && t.status === 'pending')
@@ -57,7 +60,10 @@ export default function UpcomingExpensesWidget() {
           </svg>
           <h3 className="text-lg font-bold text-gray-900">Próximas despesas</h3>
         </div>
-        <button className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100">
+        <button
+          onClick={() => setIsTransactionModalOpen(true)}
+          className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100"
+        >
           <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
           </svg>
@@ -86,6 +92,8 @@ export default function UpcomingExpensesWidget() {
           </div>
         ))}
       </div>
+
+      <NewTransactionModal isOpen={isTransactionModalOpen} onClose={() => setIsTransactionModalOpen(false)} />
     </div>
   )
 }

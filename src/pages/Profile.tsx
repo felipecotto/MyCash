@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { useFinance } from '../contexts/FinanceContext'
 import { formatCurrency } from '../utils/currency.utils'
+import AddMemberModal from '../components/modals/AddMemberModal'
 
 export default function Profile() {
   const { familyMembers } = useFinance()
   const [activeTab, setActiveTab] = useState<'info' | 'settings'>('info')
+  const [isMemberModalOpen, setIsMemberModalOpen] = useState(false)
 
   const currentUser = familyMembers[0] || null
 
@@ -70,7 +72,10 @@ export default function Profile() {
             {familyMembers.length === 0 ? (
               <div className="text-center py-8">
                 <p className="text-gray-500 mb-4">Nenhum membro cadastrado</p>
-                <button className="px-4 py-2 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors">
+                <button
+                  onClick={() => setIsMemberModalOpen(true)}
+                  className="px-4 py-2 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
+                >
                   Adicionar Membro da Família
                 </button>
               </div>
@@ -166,6 +171,8 @@ export default function Profile() {
           </div>
         </div>
       )}
+
+      <AddMemberModal isOpen={isMemberModalOpen} onClose={() => setIsMemberModalOpen(false)} />
     </div>
   )
 }

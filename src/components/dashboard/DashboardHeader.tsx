@@ -2,11 +2,15 @@ import { useState } from 'react'
 import { useFinance } from '../../contexts/FinanceContext'
 import { useSidebar } from '../../hooks/useSidebar'
 import FiltersMobileModal from '../modals/FiltersMobileModal'
+import NewTransactionModal from '../modals/NewTransactionModal'
+import AddMemberModal from '../modals/AddMemberModal'
 
 export default function DashboardHeader() {
   const { searchText, setSearchText, familyMembers, setSelectedMember, selectedMember } = useFinance()
   const { isMobile } = useSidebar()
   const [isFilterOpen, setIsFilterOpen] = useState(false)
+  const [isTransactionModalOpen, setIsTransactionModalOpen] = useState(false)
+  const [isMemberModalOpen, setIsMemberModalOpen] = useState(false)
 
   const handleMemberClick = (memberId: string | null) => {
     if (selectedMember === memberId) {
@@ -103,14 +107,31 @@ export default function DashboardHeader() {
           </div>
 
           {/* Botão Nova Transação */}
-          <button className="px-4 py-2 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors flex items-center gap-2 whitespace-nowrap">
+          <button
+            onClick={() => setIsTransactionModalOpen(true)}
+            className="px-4 py-2 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors flex items-center gap-2 whitespace-nowrap"
+          >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
             </svg>
             <span className="hidden sm:inline">Nova transação</span>
           </button>
+
+          {/* Botão Adicionar Membro */}
+          <button
+            onClick={() => setIsMemberModalOpen(true)}
+            className="w-10 h-10 rounded-full border-2 border-white bg-lime-400 text-gray-900 hover:bg-lime-500 transition-colors flex items-center justify-center z-10"
+            title="Adicionar Membro"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+            </svg>
+          </button>
         </div>
       </div>
+
+      <NewTransactionModal isOpen={isTransactionModalOpen} onClose={() => setIsTransactionModalOpen(false)} />
+      <AddMemberModal isOpen={isMemberModalOpen} onClose={() => setIsMemberModalOpen(false)} />
     </div>
   )
 }

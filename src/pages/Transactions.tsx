@@ -1,10 +1,13 @@
+import { useState } from 'react'
 import TransactionsTable from '../components/dashboard/TransactionsTable'
 import { useFinance } from '../contexts/FinanceContext'
 import { formatCurrency } from '../utils/currency.utils'
+import NewTransactionModal from '../components/modals/NewTransactionModal'
 
 export default function Transactions() {
   const { getFilteredTransactions } = useFinance()
   const transactions = getFilteredTransactions()
+  const [isTransactionModalOpen, setIsTransactionModalOpen] = useState(false)
 
   const totalIncome = transactions
     .filter((t) => t.type === 'income' && t.status === 'completed')
@@ -20,7 +23,10 @@ export default function Transactions() {
     <div className="p-4 md:p-6 lg:p-8 max-w-[1400px] mx-auto">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-3xl font-bold text-gray-900">Transações</h1>
-        <button className="px-4 py-2 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors flex items-center gap-2">
+        <button
+          onClick={() => setIsTransactionModalOpen(true)}
+          className="px-4 py-2 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors flex items-center gap-2"
+        >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
           </svg>
@@ -51,6 +57,8 @@ export default function Transactions() {
       </div>
 
       <TransactionsTable />
+
+      <NewTransactionModal isOpen={isTransactionModalOpen} onClose={() => setIsTransactionModalOpen(false)} />
     </div>
   )
 }
