@@ -65,8 +65,8 @@ export function ImagePlaceholder({
         radius,
         className
       )}
-      role="img"
-      aria-label={asset?.alt ?? label}
+      role={asset ? undefined : 'img'}
+      aria-label={asset ? undefined : label}
       data-image-id={id}
     >
       {asset ? (
@@ -106,9 +106,7 @@ export function ImagePlaceholder({
             </p>
           ) : null}
         </div>
-      ) : (
-        <span className="sr-only">{asset?.alt ?? label}</span>
-      )}
+      ) : null}
     </div>
   )
 }

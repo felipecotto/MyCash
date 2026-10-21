@@ -20,7 +20,7 @@ export function HeroProgressMock() {
       <div className="relative overflow-hidden rounded-[1.75rem] border border-gray-200/80 bg-white p-5 shadow-lift md:p-6">
         <div className="mb-5 flex items-start justify-between gap-3">
           <div>
-            <p className="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-ink-400">
+            <p className="font-body text-[11px] font-medium uppercase tracking-[0.12em] text-ink-600">
               Meta compartilhada
             </p>
             <h3 className="mt-1 font-heading text-xl font-medium tracking-tight text-ink-900">
@@ -82,13 +82,13 @@ export function HeroProgressMock() {
             </div>
             <div className="grid grid-cols-2 gap-2.5">
               <div className="rounded-xl border border-gray-100 bg-surface-50 px-3 py-2.5">
-                <p className="font-body text-[11px] text-ink-400">Ana</p>
+                <p className="font-body text-[11px] text-ink-600">Ana</p>
                 <p className="mt-0.5 font-body text-sm font-medium tabular-nums text-ink-900">
                   R$ 9.200
                 </p>
               </div>
               <div className="rounded-xl border border-gray-100 bg-surface-50 px-3 py-2.5">
-                <p className="font-body text-[11px] text-ink-400">Bruno</p>
+                <p className="font-body text-[11px] text-ink-600">Bruno</p>
                 <p className="mt-0.5 font-body text-sm font-medium tabular-nums text-ink-900">
                   R$ 7.800
                 </p>

@@ -58,6 +58,12 @@
   button {
     @apply cursor-pointer;
   }
+
+  /* Foco visível em tudo que recebe teclado (links, botões nativos, campos) */
+  :focus-visible {
+    outline: 2px solid var(--color-green-700);
+    outline-offset: 2px;
+  }
 }
 
 @layer utilities {

@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion'
 import { WaitlistButton } from './WaitlistButton'
-import { Button } from '@/components/ui/button'
+import { buttonVariants } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 import { WaveBackground } from './WaveBackground'
 import { Heart } from 'lucide-react'
 
@@ -25,7 +26,9 @@ export function Scoreboard() {
       <WaveBackground opacity={0.25} />
 
       <div className="relative mx-auto grid w-full max-w-[1200px] items-center gap-14 px-4 md:gap-16 md:px-6 lg:grid-cols-2 lg:gap-20 lg:px-8">
+        {/* Ilustração do painel: decorativa, sem foco nem leitura por leitor de tela */}
         <motion.div
+          aria-hidden
           className="order-2 overflow-hidden rounded-[1.75rem] border border-gray-200 bg-white p-4 shadow-soft md:p-5 lg:order-1"
           initial={{ opacity: 0, x: -16 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -70,7 +73,7 @@ export function Scoreboard() {
                   </span>
                 </div>
                 <div className="font-body text-xs">
-                  <p className="text-ink-400">R$ 4.800</p>
+                  <p className="text-ink-600">R$ 4.800</p>
                   <p className="font-medium text-ink-900">de R$ 15.000</p>
                 </div>
               </div>
@@ -111,7 +114,7 @@ export function Scoreboard() {
                     className="w-full max-w-[24px] rounded-t-md bg-green-700/90"
                     style={{ height: `${bar.h}%` }}
                   />
-                  <span className="font-body text-[10px] text-ink-400">{bar.label}</span>
+                  <span className="font-body text-[10px] text-ink-600">{bar.label}</span>
                 </div>
               ))}
             </div>
@@ -123,10 +126,17 @@ export function Scoreboard() {
               <span className="font-medium text-ink-900">R$ 500 cada</span>
             </p>
             <div className="flex gap-2">
-              <WaitlistButton size="sm" label="Confirmar ritmo" />
-              <Button variant="ghost" size="sm" className="font-body font-medium text-ink-600">
+              <span className={cn(buttonVariants({ size: 'sm' }), 'pointer-events-none font-body')}>
+                Confirmar ritmo
+              </span>
+              <span
+                className={cn(
+                  buttonVariants({ variant: 'ghost', size: 'sm' }),
+                  'pointer-events-none font-body font-medium text-ink-600'
+                )}
+              >
                 Editar
-              </Button>
+              </span>
             </div>
           </div>
         </motion.div>

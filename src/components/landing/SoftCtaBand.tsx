@@ -36,7 +36,7 @@ export function SoftCtaBand() {
           </div>
           <Link
             href="#faq"
-            className="inline-flex min-h-[44px] shrink-0 items-center justify-center rounded-full bg-green-700 px-5 font-body text-sm font-medium text-white transition-colors hover:bg-green-500"
+            className="inline-flex min-h-[44px] shrink-0 items-center justify-center rounded-full bg-green-700 px-5 font-body text-sm font-medium text-white transition-colors hover:bg-green-900"
           >
             Saiba mais
           </Link>

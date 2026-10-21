@@ -64,7 +64,7 @@ export function Faq() {
                     </span>
                     <span
                       className={cn(
-                        'flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-gray-200 text-ink-400',
+                        'flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-gray-200 text-ink-600',
                         isOpen && 'border-mint-200 bg-mint-100 text-green-700'
                       )}
                     >

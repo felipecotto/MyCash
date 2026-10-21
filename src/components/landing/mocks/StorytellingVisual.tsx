@@ -42,7 +42,7 @@ export function StorytellingVisual({ mode = 'aportes' }: StorytellingVisualProps
             </p>
           </div>
           <div className="rounded-xl bg-surface-50 p-3">
-            <p className="font-body text-[11px] font-medium text-ink-400">Meta</p>
+            <p className="font-body text-[11px] font-medium text-ink-600">Meta</p>
             <p className="mt-1 font-body text-sm font-medium tabular-nums text-ink-900">
               {mode === 'metas' ? 'R$ 18.000' : 'R$ 12.800'}
             </p>

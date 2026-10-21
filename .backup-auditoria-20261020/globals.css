@@ -1,0 +1,94 @@
+@import '../styles/tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 9%;
+    --primary: 158 80% 27%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 18 62% 47%;
+    --accent-foreground: 0 0% 100%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 158 80% 27%;
+    --brand: #0e7d5e;
+    --warm: #c1592e;
+  }
+
+  * {
+    @apply border-gray-200;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white font-sans antialiased;
+    color: var(--color-ink-900);
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-plus-jakarta), system-ui, sans-serif;
+    @apply font-medium tracking-tight;
+    color: var(--color-ink-900);
+  }
+
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-plus-jakarta), system-ui, sans-serif;
+    @apply font-medium tracking-tight;
+    color: var(--color-ink-900);
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .font-heading {
+    font-family: var(--font-plus-jakarta), system-ui, sans-serif;
+  }
+
+  .font-body {
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+  }
+
+  .font-quote {
+    font-family: var(--font-lora), Georgia, serif;
+  }
+
+  .brand-dot::after {
+    content: '.';
+    color: var(--brand);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

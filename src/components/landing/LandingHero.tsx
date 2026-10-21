@@ -2,19 +2,11 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { WaitlistButton } from './WaitlistButton'
 import { HeroProgressMock } from './mocks/HeroProgressMock'
 import { ImagePlaceholder } from './ImagePlaceholder'
 import { WaveBackground } from './WaveBackground'
-import { landingImages } from './imageAssets'
-
-const socialAvatars = [
-  landingImages['brand-real'].file,
-  landingImages['brand-real-man'].file,
-  landingImages['band-secure'].file,
-] as const
 
 export function LandingHero() {
   return (
@@ -80,34 +72,14 @@ export function LandingHero() {
             </Link>
           </motion.div>
 
-          <motion.div
-            className="mt-10 flex items-center gap-3"
+          <motion.p
+            className="mt-10 font-body text-sm font-medium text-ink-600"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.22 }}
           >
-            <div className="flex -space-x-2.5">
-              {socialAvatars.map((src, i) => (
-                <div
-                  key={src}
-                  className="relative h-9 w-9 overflow-hidden rounded-full border-2 border-white shadow-sm ring-2 ring-terracotta-300/60"
-                >
-                  <Image
-                    src={src}
-                    alt=""
-                    fill
-                    sizes="36px"
-                    className="object-cover"
-                    style={{ objectPosition: i === 2 ? 'center 20%' : 'center' }}
-                  />
-                </div>
-              ))}
-            </div>
-            <p className="font-body text-sm font-medium text-ink-600">
-              Junte-se a{' '}
-              <span className="text-ink-900">+2.3k casais</span>
-            </p>
-          </motion.div>
+            Lista de espera aberta. Liberamos o acesso em ondas pequenas.
+          </motion.p>
         </div>
 
         <motion.div

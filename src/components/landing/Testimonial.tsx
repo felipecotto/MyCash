@@ -1,10 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 import { ImagePlaceholder } from './ImagePlaceholder'
 import { WaveBackground } from './WaveBackground'
-import { landingImages } from './imageAssets'
 
 export function Testimonial() {
   return (
@@ -50,22 +48,12 @@ export function Testimonial() {
               fazer sentido.
             </p>
             <footer className="mt-8 flex items-center gap-3">
-              <div className="relative h-10 w-10 overflow-hidden rounded-full ring-2 ring-terracotta-300">
-                <Image
-                  src={landingImages['band-secure'].file}
-                  alt=""
-                  fill
-                  sizes="40px"
-                  className="object-cover"
-                  style={{ objectPosition: 'center 20%' }}
-                />
-              </div>
               <div>
                 <p className="font-heading text-sm font-medium text-ink-900">
-                  Bia & André
+                  Luiz e Carol
                 </p>
                 <p className="mt-0.5 font-body text-xs font-medium text-ink-600">
-                  Casal · São Paulo
+                  Cenário ilustrativo · protótipo
                 </p>
               </div>
             </footer>

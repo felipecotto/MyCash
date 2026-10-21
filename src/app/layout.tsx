@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans, Lora } from 'next/font/google'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
+import { MotionProvider } from '@/components/MotionProvider'
 import './globals.css'
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -35,7 +36,9 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${plusJakarta.variable} ${GeistSans.variable} ${GeistMono.variable} ${lora.variable}`}
     >
-      <body className="min-h-screen font-sans antialiased">{children}</body>
+      <body className="min-h-screen font-sans antialiased">
+        <MotionProvider>{children}</MotionProvider>
+      </body>
     </html>
   )
 }
