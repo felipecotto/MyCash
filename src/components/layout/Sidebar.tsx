@@ -1,4 +1,9 @@
-import { Link, useLocation } from 'react-router-dom'
+﻿'use client'
+
+import Avatar from '../ui/Avatar'
+
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useSidebar } from '../../hooks/useSidebar'
 import Tooltip from '../ui/Tooltip'
 
@@ -9,7 +14,7 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { path: '/', label: 'Home', icon: <HomeIcon /> },
+  { path: '/dashboard', label: 'Home', icon: <HomeIcon /> },
   { path: '/cards', label: 'Cartões', icon: <CardIcon /> },
   { path: '/transactions', label: 'Transações', icon: <TransactionIcon /> },
   { path: '/profile', label: 'Perfil', icon: <ProfileIcon /> },
@@ -17,14 +22,14 @@ const navItems: NavItem[] = [
 
 export default function Sidebar() {
   const { isExpanded, isMobile, toggle } = useSidebar()
-  const location = useLocation()
+  const pathname = usePathname()
 
   // Não renderizar sidebar no mobile/tablet
   if (isMobile) {
     return null
   }
 
-  const isActive = (path: string) => location.pathname === path
+  const isActive = (path: string) => pathname === path
 
   return (
     <aside
@@ -37,10 +42,10 @@ export default function Sidebar() {
       {/* Logo */}
       <div className="h-16 flex items-center px-4 border-b border-gray-200">
         {isExpanded ? (
-          <h1 className="text-xl font-bold text-gray-900">mycash+</h1>
+          <h1 className="text-xl font-medium text-ink-900">nosso+</h1>
         ) : (
-          <div className="w-8 h-8 bg-lime-400 rounded flex items-center justify-center">
-            <span className="text-gray-900 font-bold text-sm">M</span>
+          <div className="w-8 h-8 bg-green-700 rounded flex items-center justify-center">
+            <span className="text-white font-medium text-sm">n</span>
           </div>
         )}
       </div>
@@ -51,22 +56,22 @@ export default function Sidebar() {
           const active = isActive(item.path)
           const NavButton = (
             <Link
-              to={item.path}
+              href={item.path}
               className={`
                 flex items-center gap-3 px-4 py-3 mx-2 mb-1 rounded-lg
                 transition-colors duration-200
                 ${
                   active
-                    ? 'bg-gray-900 text-white'
-                    : 'text-gray-600 hover:bg-gray-100'
+                    ? 'bg-mint-100 text-green-700'
+                    : 'text-ink-600 hover:bg-surface-50'
                 }
               `}
             >
-              <span className={active ? 'text-lime-400' : 'text-gray-600'}>
+              <span className={active ? 'text-green-700' : 'text-ink-600'}>
                 {item.icon}
               </span>
               {isExpanded && (
-                <span className={`font-medium ${active ? 'text-white' : ''}`}>
+                <span className={`font-medium ${active ? 'text-green-700' : ''}`}>
                   {item.label}
                 </span>
               )}
@@ -87,23 +92,19 @@ export default function Sidebar() {
       <div className="border-t border-gray-200 p-4">
         {isExpanded ? (
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center">
-              <span className="text-gray-600 text-sm font-semibold">LM</span>
-            </div>
+            <Avatar name="Felipe Oliveira" size="lg" />
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-semibold text-gray-900 truncate">
+              <p className="text-sm font-semibold text-ink-900 truncate">
                 Felipe Oliveira
               </p>
-              <p className="text-xs text-gray-500 truncate">
+              <p className="text-xs text-ink-400 truncate">
                 felipeoliveira@gmail.com
               </p>
             </div>
           </div>
         ) : (
           <Tooltip content="Felipe Oliveira" position="right">
-            <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center mx-auto">
-              <span className="text-gray-600 text-sm font-semibold">LM</span>
-            </div>
+            <Avatar name="Felipe Oliveira" size="lg" className="mx-auto" />
           </Tooltip>
         )}
       </div>
@@ -119,9 +120,9 @@ export default function Sidebar() {
         aria-label={isExpanded ? 'Colapsar sidebar' : 'Expandir sidebar'}
       >
         {isExpanded ? (
-          <ChevronLeftIcon className="w-4 h-4 text-gray-600" />
+          <ChevronLeftIcon className="w-4 h-4 text-ink-600" />
         ) : (
-          <ChevronRightIcon className="w-4 h-4 text-gray-600" />
+          <ChevronRightIcon className="w-4 h-4 text-ink-600" />
         )}
       </button>
     </aside>

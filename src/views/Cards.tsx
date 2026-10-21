@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useFinance } from '../contexts/FinanceContext'
 import { formatCurrency } from '../utils/currency.utils'
 import AddCardModal from '../components/modals/AddCardModal'
+import EmptyState from '../components/ui/EmptyState'
 
 export default function Cards() {
   const { creditCards } = useFinance()
@@ -22,27 +23,30 @@ export default function Cards() {
 
   if (creditCards.length === 0) {
     return (
-      <div className="p-4 md:p-6 lg:p-8 max-w-[1400px] mx-auto">
-        <div className="text-center py-16">
-          <div className="w-24 h-24 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-4">
-            <svg className="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="p-4 md:p-6 lg:p-8 py-6 md:py-8 max-w-[1280px] mx-auto">
+        <EmptyState
+          size="lg"
+          icon={
+            <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
             </svg>
-          </div>
-          <h3 className="text-xl font-bold text-gray-900 mb-2">Nenhum cartão cadastrado</h3>
-          <button
-            onClick={() => setIsAddCardModalOpen(true)}
-            className="mt-4 px-6 py-3 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
-          >
-            Cadastrar Primeiro Cartão
-          </button>
-        </div>
+          }
+          title="Nenhum cartão cadastrado"
+          action={
+            <button
+              onClick={() => setIsAddCardModalOpen(true)}
+              className="px-6 py-3 bg-green-700 text-white rounded-lg font-medium hover:bg-green-500 transition-colors"
+            >
+              Cadastrar Primeiro Cartão
+            </button>
+          }
+        />
       </div>
     )
   }
 
   return (
-    <div className="p-4 md:p-6 lg:p-8 max-w-[1400px] mx-auto">
+    <div className="p-4 md:p-6 lg:p-8 py-6 md:py-8 max-w-[1280px] mx-auto">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-3xl font-bold text-gray-900">Cartões de Crédito</h1>
         <button

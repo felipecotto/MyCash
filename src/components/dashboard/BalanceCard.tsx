@@ -28,16 +28,16 @@ export default function BalanceCard() {
   }, [currentBalance, transactions])
 
   return (
-    <div className="relative bg-gray-900 text-white rounded-lg p-6 overflow-hidden">
+    <div className="relative bg-gradient-to-br from-mint-50 to-mint-100 border border-mint-200 rounded-lg p-6 overflow-hidden">
       {/* Círculo verde desfocado decorativo */}
-      <div className="absolute -top-20 -right-20 w-40 h-40 bg-lime-400 opacity-20 blur-3xl rounded-full" />
+      <div className="absolute -top-20 -right-20 w-40 h-40 bg-green-500 opacity-10 blur-3xl rounded-full" />
 
       <div className="relative z-10">
-        <p className="text-sm text-gray-400 mb-2">Saldo Total</p>
-        <p className="text-4xl font-bold mb-4">{formatCurrency(animatedValue)}</p>
+        <p className="text-sm text-ink-600 mb-2">Saldo Total</p>
+        <p className="text-4xl font-bold mb-4 text-ink-900">{formatCurrency(animatedValue)}</p>
 
         {growth.percentage > 0 && (
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white bg-opacity-20 rounded-full backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/70 text-green-700 rounded-full backdrop-blur-sm border border-mint-200">
             <svg
               className="w-4 h-4"
               fill="none"

@@ -1,3 +1,5 @@
+'use client'
+
 import { createContext, useContext, useState, ReactNode } from 'react'
 import { Transaction } from '../types/transaction'
 import { Goal } from '../types/goal'

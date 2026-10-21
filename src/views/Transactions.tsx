@@ -20,7 +20,7 @@ export default function Transactions() {
   const difference = totalIncome - totalExpenses
 
   return (
-    <div className="p-4 md:p-6 lg:p-8 max-w-[1400px] mx-auto">
+    <div className="p-4 md:p-6 lg:p-8 py-6 md:py-8 max-w-[1280px] mx-auto">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-3xl font-bold text-gray-900">Transações</h1>
         <button

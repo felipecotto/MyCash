@@ -1,3 +1,5 @@
+'use client'
+
 import { ReactNode } from 'react'
 import { useSidebar } from '../../hooks/useSidebar'
 import Sidebar from './Sidebar'

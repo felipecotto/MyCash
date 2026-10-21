@@ -18,30 +18,30 @@ export default function CreditCardsWidget() {
   const getThemeColors = (theme: string) => {
     switch (theme) {
       case 'black':
-        return 'bg-gray-900 text-white'
+        return 'bg-ink-900 text-white'
       case 'lime':
-        return 'bg-lime-400 text-gray-900'
+        return 'bg-green-500 text-white'
       case 'white':
-        return 'bg-white border-2 border-gray-300 text-gray-900'
+        return 'bg-white border-2 border-gray-300 text-ink-900'
       default:
-        return 'bg-gray-100 text-gray-900'
+        return 'bg-mint-100 text-ink-900'
     }
   }
 
   if (creditCards.length === 0) {
     return (
-      <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-        <p className="text-gray-500 text-center">Nenhum cartão cadastrado</p>
+      <div className="bg-surface-50 rounded-lg p-6 border border-gray-200">
+        <p className="text-ink-400 text-center">Vocês ainda não têm cartões por aqui</p>
       </div>
     )
   }
 
   return (
-    <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+    <div className="bg-surface-50 rounded-lg p-6 border border-gray-200">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-gray-900">Cartões de Crédito</h3>
-        <button className="w-8 h-8 rounded-full bg-white border border-gray-300 flex items-center justify-center hover:bg-gray-100">
-          <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <h3 className="text-lg font-semibold text-ink-900">Cartões de Crédito</h3>
+        <button className="w-8 h-8 rounded-full bg-white border border-gray-300 flex items-center justify-center hover:bg-surface-50">
+          <svg className="w-4 h-4 text-ink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
           </svg>
         </button>
@@ -63,14 +63,14 @@ export default function CreditCardsWidget() {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <p className="text-sm text-gray-600">{card.name}</p>
-                  <p className="text-lg font-bold text-gray-900">{formatCurrency(card.currentBill)}</p>
+                  <p className="text-sm text-ink-600">{card.name}</p>
+                  <p className="text-lg font-bold text-ink-900">{formatCurrency(card.currentBill)}</p>
                   {card.lastDigits && (
-                    <p className="text-xs text-gray-500">•••• {card.lastDigits}</p>
+                    <p className="text-xs text-ink-400">•••• {card.lastDigits}</p>
                   )}
                 </div>
                 <div className="text-right">
-                  <div className="inline-block px-2 py-1 bg-gray-100 rounded text-xs font-semibold">
+                  <div className="inline-block px-2 py-1 bg-mint-100 rounded text-xs font-semibold">
                     {usagePercentage.toFixed(0)}%
                   </div>
                 </div>
@@ -89,7 +89,7 @@ export default function CreditCardsWidget() {
           >
             Anterior
           </button>
-          <span className="px-3 py-1 text-sm text-gray-600">
+          <span className="px-3 py-1 text-sm text-ink-600">
             {currentPage} / {totalPages}
           </span>
           <button

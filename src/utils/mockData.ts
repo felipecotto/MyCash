@@ -1,15 +1,32 @@
 import { Transaction } from '../types/transaction'
-import { Goal } from '../types/goal'
+import { Goal, GoalContribution } from '../types/goal'
 import { CreditCard } from '../types/creditCard'
 import { BankAccount } from '../types/bankAccount'
 import { FamilyMember } from '../types/familyMember'
 
-// Membros da família
+const now = new Date()
+
+// Chave 'YYYY-MM' de N meses atrás (0 = mês atual) — assim o histórico de
+// aportes sempre fica relativo a hoje, em vez de datas fixas no passado.
+function monthKey(monthsAgo: number): string {
+  const d = new Date(now.getFullYear(), now.getMonth() - monthsAgo, 1)
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
+}
+
+function contributions(amounts: number[]): GoalContribution[] {
+  // amounts[0] = mês mais antigo ... amounts[last] = mês atual
+  return amounts.map((amount, index) => ({
+    month: monthKey(amounts.length - 1 - index),
+    amount,
+  }))
+}
+
+// Vocês dois
 export const mockFamilyMembers: FamilyMember[] = [
   {
     id: 'member-1',
     name: 'Felipe Oliveira',
-    role: 'Pai',
+    role: 'Você',
     avatar: null,
     monthlyIncome: 8000,
     createdAt: new Date('2024-01-01'),
@@ -18,18 +35,9 @@ export const mockFamilyMembers: FamilyMember[] = [
   {
     id: 'member-2',
     name: 'Maria Silva',
-    role: 'Mãe',
+    role: 'Parceira',
     avatar: null,
     monthlyIncome: 6000,
-    createdAt: new Date('2024-01-01'),
-    updatedAt: new Date('2024-01-01'),
-  },
-  {
-    id: 'member-3',
-    name: 'João Marte',
-    role: 'Filho',
-    avatar: null,
-    monthlyIncome: 0,
     createdAt: new Date('2024-01-01'),
     updatedAt: new Date('2024-01-01'),
   },
@@ -100,36 +108,85 @@ export const mockCreditCards: CreditCard[] = [
   },
 ]
 
-// Objetivos
+// Objetivos do casal
 export const mockGoals: Goal[] = [
   {
     id: 'goal-1',
-    title: 'Viagem para Europa',
-    description: 'Economizar para viagem de férias',
-    targetAmount: 50000,
-    currentAmount: 15000,
-    deadline: new Date('2024-12-31'),
+    title: 'Reserva de Emergência',
+    description: '6 meses de despesas guardados, pra imprevistos não tirarem o sono de ninguém',
+    targetAmount: 84000,
+    currentAmount: 42000,
+    deadline: null,
     status: 'active',
+    category: 'emergency',
     memberId: null,
+    links: [],
+    contributions: contributions([6000, 7500, 6800, 7200, 7000, 7500]),
     createdAt: new Date('2024-01-01'),
     updatedAt: new Date('2024-01-01'),
   },
   {
     id: 'goal-2',
-    title: 'Reserva de Emergência',
-    description: '6 meses de despesas',
-    targetAmount: 84000,
-    currentAmount: 42000,
-    deadline: null,
+    title: 'Cozinha Nova',
+    description: 'Reforma da cozinha do apartamento',
+    targetAmount: 25000,
+    currentAmount: 17000,
+    deadline: new Date('2026-12-31'),
     status: 'active',
+    category: 'home',
     memberId: null,
+    links: [
+      {
+        id: 'link-1',
+        title: 'Orçamento marcenaria Bertioga',
+        url: 'https://example.com/orcamento-marcenaria',
+        createdAt: new Date('2024-02-10'),
+      },
+    ],
+    contributions: contributions([2000, 3200, 2800, 3000, 2500, 3500]),
+    createdAt: new Date('2024-01-01'),
+    updatedAt: new Date('2024-01-01'),
+  },
+  {
+    id: 'goal-3',
+    title: 'Euro Trip',
+    description: 'Duas semanas rodando a Europa, só vocês dois',
+    targetAmount: 50000,
+    currentAmount: 15000,
+    deadline: new Date('2027-06-30'),
+    status: 'active',
+    category: 'travel',
+    memberId: null,
+    links: [
+      {
+        id: 'link-2',
+        title: 'Roteiro Itália + França (14 dias)',
+        url: 'https://example.com/roteiro-europa',
+        createdAt: new Date('2024-03-01'),
+      },
+    ],
+    contributions: contributions([3500, 3000, 2800, 2200, 1800, 1700]),
+    createdAt: new Date('2024-01-01'),
+    updatedAt: new Date('2024-01-01'),
+  },
+  {
+    id: 'goal-4',
+    title: 'Carro Novo',
+    description: 'Trocar o carro atual por um mais novo e econômico',
+    targetAmount: 60000,
+    currentAmount: 12000,
+    deadline: new Date('2027-12-31'),
+    status: 'active',
+    category: 'vehicle',
+    memberId: null,
+    links: [],
+    contributions: contributions([1800, 2200, 2000, 1900, 2100, 2000]),
     createdAt: new Date('2024-01-01'),
     updatedAt: new Date('2024-01-01'),
   },
 ]
 
 // Transações
-const now = new Date()
 const getDate = (daysAgo: number) => {
   const date = new Date(now)
   date.setDate(date.getDate() - daysAgo)

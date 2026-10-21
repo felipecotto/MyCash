@@ -35,7 +35,7 @@ export default function FinancialFlowChart() {
     <div className="bg-white border border-gray-200 rounded-lg p-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
-          <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -43,17 +43,17 @@ export default function FinancialFlowChart() {
               d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
             />
           </svg>
-          <h3 className="text-lg font-bold text-gray-900">Fluxo Financeiro</h3>
+          <h3 className="text-lg font-bold text-ink-900">Fluxo Financeiro</h3>
         </div>
 
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-lime-400"></div>
-            <span className="text-sm text-gray-600">Receitas</span>
+            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            <span className="text-sm text-ink-600">Receitas</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-gray-900"></div>
-            <span className="text-sm text-gray-600">Despesas</span>
+            <div className="w-3 h-3 rounded-full bg-ink-900"></div>
+            <span className="text-sm text-ink-600">Despesas</span>
           </div>
         </div>
       </div>
@@ -62,22 +62,22 @@ export default function FinancialFlowChart() {
         <AreaChart data={monthlyData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
           <defs>
             <linearGradient id="colorIncome" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#A3FF00" stopOpacity={0.3} />
-              <stop offset="95%" stopColor="#A3FF00" stopOpacity={0} />
+              <stop offset="5%" stopColor="#1FA97A" stopOpacity={0.3} />
+              <stop offset="95%" stopColor="#1FA97A" stopOpacity={0} />
             </linearGradient>
             <linearGradient id="colorExpenses" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="#171717" stopOpacity={0.1} />
               <stop offset="95%" stopColor="#171717" stopOpacity={0} />
             </linearGradient>
           </defs>
-          <CartesianGrid strokeDasharray="3 3" stroke="#F3F4F6" />
+          <CartesianGrid vertical={false} stroke="#F5F5F5" />
           <XAxis
             dataKey="month"
-            tick={{ fontSize: 12, fill: '#737373' }}
+            tick={{ fontSize: 12, fill: '#52525B' }}
             axisLine={{ stroke: '#E5E5E5' }}
           />
           <YAxis
-            tick={{ fontSize: 12, fill: '#737373' }}
+            tick={{ fontSize: 12, fill: '#52525B' }}
             axisLine={{ stroke: '#E5E5E5' }}
             tickFormatter={formatYAxis}
           />
@@ -93,7 +93,7 @@ export default function FinancialFlowChart() {
           <Area
             type="monotone"
             dataKey="income"
-            stroke="#A3FF00"
+            stroke="#1FA97A"
             strokeWidth={3}
             fill="url(#colorIncome)"
           />

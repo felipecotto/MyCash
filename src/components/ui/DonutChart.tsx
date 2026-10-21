@@ -9,7 +9,7 @@ export default function DonutChart({
   percentage,
   size = 64,
   strokeWidth = 6,
-  color = '#A3FF00',
+  color = '#1FA97A',
 }: DonutChartProps) {
   const radius = (size - strokeWidth) / 2
   const circumference = 2 * Math.PI * radius
@@ -43,7 +43,7 @@ export default function DonutChart({
       </svg>
       {/* Percentage text */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <span className="text-xs font-semibold text-gray-900">{percentage.toFixed(1)}%</span>
+        <span className="text-xs font-semibold text-ink-900">{percentage.toFixed(1)}%</span>
       </div>
     </div>
   )

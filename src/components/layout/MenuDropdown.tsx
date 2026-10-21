@@ -1,4 +1,7 @@
-import { Link, useLocation } from 'react-router-dom'
+'use client'
+
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 interface MenuDropdownProps {
   isOpen: boolean
@@ -6,18 +9,18 @@ interface MenuDropdownProps {
 }
 
 const navItems = [
-  { path: '/', label: 'Home', icon: <HomeIcon /> },
+  { path: '/dashboard', label: 'Home', icon: <HomeIcon /> },
   { path: '/cards', label: 'Cartões', icon: <CardIcon /> },
   { path: '/transactions', label: 'Transações', icon: <TransactionIcon /> },
   { path: '/profile', label: 'Perfil', icon: <ProfileIcon /> },
 ]
 
 export default function MenuDropdown({ isOpen, onClose }: MenuDropdownProps) {
-  const location = useLocation()
+  const pathname = usePathname()
 
   if (!isOpen) return null
 
-  const isActive = (path: string) => location.pathname === path
+  const isActive = (path: string) => pathname === path
 
   return (
     <>
@@ -38,10 +41,10 @@ export default function MenuDropdown({ isOpen, onClose }: MenuDropdownProps) {
       >
         {/* Header */}
         <div className="h-16 flex items-center justify-between px-4 border-b border-gray-200">
-          <h2 className="text-lg font-bold text-gray-900">Menu</h2>
+          <h2 className="text-lg font-bold text-ink-900">Menu</h2>
           <button
             onClick={onClose}
-            className="w-8 h-8 flex items-center justify-center text-gray-600 hover:bg-gray-100 rounded"
+            className="w-8 h-8 flex items-center justify-center text-ink-600 hover:bg-surface-50 rounded"
             aria-label="Fechar menu"
           >
             <XIcon />
@@ -55,18 +58,18 @@ export default function MenuDropdown({ isOpen, onClose }: MenuDropdownProps) {
             return (
               <Link
                 key={item.path}
-                to={item.path}
+                href={item.path}
                 onClick={onClose}
                 className={`
                   flex items-center gap-3 px-4 py-3 mx-2 mb-1 rounded-lg
                   transition-colors duration-200
-                  ${active ? 'bg-gray-900 text-white' : 'text-gray-600 hover:bg-gray-100'}
+                  ${active ? 'bg-mint-100 text-green-700' : 'text-ink-600 hover:bg-surface-50'}
                 `}
               >
-                <span className={active ? 'text-lime-400' : 'text-gray-600'}>
+                <span className={active ? 'text-green-700' : 'text-ink-600'}>
                   {item.icon}
                 </span>
-                <span className={`font-medium ${active ? 'text-white' : ''}`}>
+                <span className={`font-medium ${active ? 'text-green-700' : ''}`}>
                   {item.label}
                 </span>
               </Link>

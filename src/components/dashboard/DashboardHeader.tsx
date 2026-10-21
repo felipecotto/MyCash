@@ -4,6 +4,7 @@ import { useSidebar } from '../../hooks/useSidebar'
 import FiltersMobileModal from '../modals/FiltersMobileModal'
 import NewTransactionModal from '../modals/NewTransactionModal'
 import AddMemberModal from '../modals/AddMemberModal'
+import { Button } from '../ui/button'
 
 export default function DashboardHeader() {
   const { searchText, setSearchText, familyMembers, setSelectedMember, selectedMember } = useFinance()
@@ -21,8 +22,8 @@ export default function DashboardHeader() {
   }
 
   return (
-    <div className="bg-white border-b border-gray-200 p-4 md:p-6">
-      <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between max-w-[1400px] mx-auto lg:max-w-[1600px]">
+    <div className="bg-white border-b border-gray-200 px-4 md:px-6 lg:px-8 py-4 md:py-6">
+      <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between max-w-[1280px] mx-auto">
         {/* Busca e Filtros */}
         <div className="flex flex-1 gap-3 w-full md:w-auto">
           <div className="relative flex-1 md:flex-none md:w-64">
@@ -31,10 +32,10 @@ export default function DashboardHeader() {
               placeholder="Pesquisar..."
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
-              className="w-full px-4 py-2 pl-10 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-900"
+              className="w-full px-4 py-2 pl-10 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-700"
             />
             <svg
-              className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
+              className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-ink-400"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -50,10 +51,10 @@ export default function DashboardHeader() {
 
           <button
             onClick={() => setIsFilterOpen(!isFilterOpen)}
-            className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors"
+            className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-surface-50 transition-colors"
             aria-label="Filtros"
           >
-            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-ink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -74,7 +75,7 @@ export default function DashboardHeader() {
               onClick={() => handleMemberClick(null)}
               className={`
                 w-10 h-10 rounded-full border-2 flex items-center justify-center transition-all
-                ${selectedMember === null ? 'border-gray-900 bg-gray-900 text-white z-10' : 'border-white bg-gray-300 text-gray-600 hover:scale-110'}
+                ${selectedMember === null ? 'border-green-700 bg-green-700 text-white z-10' : 'border-white bg-gray-300 text-ink-600 hover:scale-110'}
               `}
               title="Todos"
             >
@@ -86,7 +87,7 @@ export default function DashboardHeader() {
                 onClick={() => handleMemberClick(member.id)}
                 className={`
                   w-10 h-10 rounded-full border-2 flex items-center justify-center transition-all relative
-                  ${selectedMember === member.id ? 'border-gray-900 bg-gray-900 text-white z-10 scale-110' : 'border-white bg-gray-300 text-gray-600 hover:scale-110'}
+                  ${selectedMember === member.id ? 'border-green-700 bg-green-700 text-white z-10 scale-110' : 'border-white bg-gray-300 text-ink-600 hover:scale-110'}
                 `}
                 title={member.name}
               >
@@ -96,8 +97,8 @@ export default function DashboardHeader() {
                   <span className="text-xs font-semibold">{member.name.charAt(0)}</span>
                 )}
                 {selectedMember === member.id && (
-                  <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-lime-400 rounded-full border-2 border-white flex items-center justify-center">
-                    <svg className="w-2.5 h-2.5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-green-700 rounded-full border-2 border-white flex items-center justify-center">
+                    <svg className="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
@@ -107,26 +108,27 @@ export default function DashboardHeader() {
           </div>
 
           {/* Botão Nova Transação */}
-          <button
+          <Button
             onClick={() => setIsTransactionModalOpen(true)}
-            className="px-4 py-2 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors flex items-center gap-2 whitespace-nowrap"
+            className="whitespace-nowrap"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
             </svg>
             <span className="hidden sm:inline">Nova transação</span>
-          </button>
+          </Button>
 
           {/* Botão Adicionar Membro */}
-          <button
+          <Button
             onClick={() => setIsMemberModalOpen(true)}
-            className="w-10 h-10 rounded-full border-2 border-white bg-lime-400 text-gray-900 hover:bg-lime-500 transition-colors flex items-center justify-center z-10"
+            size="icon"
+            className="border-2 border-white z-10"
             title="Adicionar Membro"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
             </svg>
-          </button>
+          </Button>
         </div>
       </div>
 

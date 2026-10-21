@@ -3,6 +3,7 @@ import { useFinance } from '../../contexts/FinanceContext'
 import { formatDate } from '../../utils/date.utils'
 import { formatCurrency } from '../../utils/currency.utils'
 import Pagination from '../ui/Pagination'
+import EmptyState from '../ui/EmptyState'
 
 export default function TransactionsTable() {
   const { getFilteredTransactions, familyMembers, bankAccounts, creditCards } = useFinance()
@@ -50,8 +51,8 @@ export default function TransactionsTable() {
 
   if (filteredTransactions.length === 0) {
     return (
-      <div className="bg-white border border-gray-200 rounded-lg p-12 text-center">
-        <p className="text-gray-500">Nenhum lançamento encontrado.</p>
+      <div className="bg-white border border-gray-200 rounded-lg">
+        <EmptyState size="md" message="Nenhum lançamento por aqui ainda." />
       </div>
     )
   }
@@ -60,7 +61,7 @@ export default function TransactionsTable() {
     <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
       {/* Header com controles */}
       <div className="p-4 border-b border-gray-200 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-        <h2 className="text-lg font-bold text-gray-900">Extrato Detalhado</h2>
+        <h2 className="text-lg font-bold text-ink-900">Extrato Detalhado</h2>
         <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
           <input
             type="text"
@@ -90,15 +91,15 @@ export default function TransactionsTable() {
       {/* Tabela */}
       <div className="overflow-x-auto">
         <table className="w-full">
-          <thead className="bg-gray-50">
+          <thead className="bg-surface-50">
             <tr>
-              <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 w-12">Membro</th>
-              <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600">Data</th>
-              <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600">Descrição</th>
-              <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600">Categoria</th>
-              <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600">Conta/Cartão</th>
-              <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600">Parcelas</th>
-              <th className="px-4 py-3 text-right text-xs font-semibold text-gray-600">Valor</th>
+              <th className="px-4 py-3 text-left text-xs font-semibold text-ink-600 w-12">Membro</th>
+              <th className="px-4 py-3 text-left text-xs font-semibold text-ink-600">Data</th>
+              <th className="px-4 py-3 text-left text-xs font-semibold text-ink-600">Descrição</th>
+              <th className="px-4 py-3 text-left text-xs font-semibold text-ink-600">Categoria</th>
+              <th className="px-4 py-3 text-left text-xs font-semibold text-ink-600">Conta/Cartão</th>
+              <th className="px-4 py-3 text-left text-xs font-semibold text-ink-600">Parcelas</th>
+              <th className="px-4 py-3 text-right text-xs font-semibold text-ink-600">Valor</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
@@ -111,35 +112,35 @@ export default function TransactionsTable() {
                 <tr
                   key={transaction.id}
                   className={`hover:bg-gray-50 transition-colors ${
-                    idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'
+                    idx % 2 === 0 ? 'bg-white' : 'bg-surface-50'
                   }`}
                 >
                   <td className="px-4 py-3">
                     {member ? (
                       <div className="w-6 h-6 rounded-full bg-gray-300 flex items-center justify-center">
-                        <span className="text-xs font-semibold text-gray-600">
+                        <span className="text-xs font-semibold text-ink-600">
                           {member.name.charAt(0)}
                         </span>
                       </div>
                     ) : (
                       <div className="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center">
-                        <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 text-ink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                         </svg>
                       </div>
                     )}
                   </td>
-                  <td className="px-4 py-3 text-sm text-gray-600">{formatDate(new Date(transaction.date))}</td>
+                  <td className="px-4 py-3 text-sm text-ink-600">{formatDate(new Date(transaction.date))}</td>
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-2">
                       <div
                         className={`w-6 h-6 rounded-full flex items-center justify-center ${
-                          transaction.type === 'income' ? 'bg-green-100' : 'bg-red-100'
+                          transaction.type === 'income' ? 'bg-mint-100' : 'bg-red-100'
                         }`}
                       >
                         <svg
                           className={`w-4 h-4 ${
-                            transaction.type === 'income' ? 'text-green-600' : 'text-red-600'
+                            transaction.type === 'income' ? 'text-green-700' : 'text-red-600'
                           }`}
                           fill="none"
                           stroke="currentColor"
@@ -152,16 +153,16 @@ export default function TransactionsTable() {
                           )}
                         </svg>
                       </div>
-                      <span className="text-sm font-semibold text-gray-900">{transaction.description}</span>
+                      <span className="text-sm font-semibold text-ink-900">{transaction.description}</span>
                     </div>
                   </td>
                   <td className="px-4 py-3">
-                    <span className="inline-block px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded">
+                    <span className="inline-block px-2 py-1 text-xs bg-surface-50 text-ink-600 rounded">
                       {transaction.category}
                     </span>
                   </td>
-                  <td className="px-4 py-3 text-sm text-gray-600">{getAccountName(transaction.accountId)}</td>
-                  <td className="px-4 py-3 text-sm text-gray-600">
+                  <td className="px-4 py-3 text-sm text-ink-600">{getAccountName(transaction.accountId)}</td>
+                  <td className="px-4 py-3 text-sm text-ink-600">
                     {transaction.installments > 1
                       ? `${transaction.currentInstallment}/${transaction.installments}`
                       : '-'}
@@ -169,7 +170,7 @@ export default function TransactionsTable() {
                   <td className="px-4 py-3 text-right">
                     <span
                       className={`text-sm font-bold ${
-                        transaction.type === 'income' ? 'text-green-600' : 'text-gray-900'
+                        transaction.type === 'income' ? 'text-green-700' : 'text-ink-900'
                       }`}
                     >
                       {transaction.type === 'income' ? '+' : '-'}

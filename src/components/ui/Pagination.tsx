@@ -36,7 +36,7 @@ export default function Pagination({
 
   return (
     <div className="flex items-center justify-between mt-4">
-      <p className="text-sm text-gray-600">
+      <p className="text-sm text-ink-600">
         Mostrando {startItem} a {endItem} de {totalItems}
       </p>
       <div className="flex items-center gap-2">
@@ -45,7 +45,7 @@ export default function Pagination({
           disabled={currentPage === 1}
           className={`
             px-3 py-1 rounded border
-            ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100'}
+            ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-surface-50'}
           `}
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -62,9 +62,9 @@ export default function Pagination({
               px-3 py-1 rounded border min-w-[40px]
               ${
                 page === currentPage
-                  ? 'bg-gray-900 text-white border-gray-900'
+                  ? 'bg-green-700 text-white border-green-700'
                   : typeof page === 'number'
-                  ? 'hover:bg-gray-100'
+                  ? 'hover:bg-surface-50'
                   : 'cursor-default'
               }
             `}
@@ -78,7 +78,7 @@ export default function Pagination({
           disabled={currentPage === totalPages}
           className={`
             px-3 py-1 rounded border
-            ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100'}
+            ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : 'hover:bg-surface-50'}
           `}
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
