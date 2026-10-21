@@ -26,7 +26,7 @@ export function Testimonial() {
           <div className="relative min-h-[240px] md:min-h-full">
             <ImagePlaceholder
               id="testimonial-portrait"
-              label="Luiz e Carol"
+              label="Ana e Bruno"
               aspect="square"
               rounded="none"
               hideMeta
@@ -50,7 +50,7 @@ export function Testimonial() {
             <footer className="mt-8 flex items-center gap-3">
               <div>
                 <p className="font-heading text-sm font-medium text-ink-900">
-                  Luiz e Carol
+                  Ana e Bruno
                 </p>
                 <p className="mt-0.5 font-body text-xs font-medium text-ink-600">
                   Cenário ilustrativo · protótipo

@@ -12,7 +12,7 @@ const moments = [
   {
     id: 'brand-claro',
     word: 'Claro',
-    label: 'Mãos com o celular / progresso',
+    label: 'Tela do app no celular',
   },
   {
     id: 'brand-real',
@@ -31,7 +31,7 @@ export function BrandMoments() {
             <span className="text-green-700">.</span>
           </h2>
           <p className="mt-4 font-body text-base font-medium text-ink-600">
-            Fotos humanas, luz quente e a cor da marca — o casal na frente.
+            Fotos humanas, luz natural e o casal sempre no centro.
           </p>
         </div>
 
